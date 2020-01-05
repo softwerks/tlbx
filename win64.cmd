@@ -36,4 +36,4 @@ popd
 
 :fast
 echo Building tlbx...
-cl /MP /O2 /MD /Fobuild\ /nologo src\*.c /link build\sqlite3.lib build\lua53.lib build\glfw3.lib opengl32.lib /out:bin\tlbx.exe
+cl /MP /O2 /MD /Fobuild\ /nologo src\*.c /link /subsystem:windows /entry:mainCRTStartup build\sqlite3.lib build\lua53.lib build\glfw3.lib opengl32.lib /out:bin\tlbx.exe
