@@ -33,7 +33,12 @@ pushd lib\glfw3\src
 echo Building glfw3...
 cl /MP /O2 /LD /MD /D_GLFW_WIN32 /D_GLFW_BUILD_DLL /Fo..\..\..\build\ /nologo %glfw3_files% /link user32.lib gdi32.lib shell32.lib /out:..\..\..\bin\glfw3.dll /implib:..\..\..\build\glfw3.lib
 popd
+rem cimgui
+pushd lib\cimgui
+echo Building cimgui...
+cl /MP /O2 /LD /MD /DIMGUI_IMPL_API="extern \"C\" __declspec(dllexport)" /Fo..\..\build\ /I..\glfw3\include /nologo cimgui.cpp .\imgui\*.cpp /link ..\..\build\glfw3.lib opengl32.lib /out:..\..\bin\cimgui.dll /implib:..\..\build\cimgui.lib
+popd
 
 :fast
 echo Building tlbx...
-cl /MP /O2 /MD /Fobuild\ /I.\lib\glfw3\include /I.\lib\lua /I.\lib\sqlite3 /nologo src\*.c /link /subsystem:windows /entry:mainCRTStartup build\sqlite3.lib build\lua53.lib build\glfw3.lib opengl32.lib /out:bin\tlbx.exe
+cl /MP /O2 /MD /Fobuild\ /I.\lib\glfw3\include /I.\lib\lua /I.\lib\sqlite3 /I.\lib\cimgui /nologo src\*.c /link /subsystem:windows /entry:mainCRTStartup /libpath:build sqlite3.lib lua53.lib glfw3.lib cimgui.lib opengl32.lib /out:bin\tlbx.exe
