@@ -41,4 +41,4 @@ popd
 
 :fast
 echo Building tlbx...
-cl /MP /O2 /MD /Fobuild\ /I.\lib\glfw3\include /I.\lib\lua /I.\lib\sqlite3 /I.\lib\cimgui /nologo src\*.c /link /subsystem:windows /entry:mainCRTStartup /libpath:build sqlite3.lib lua53.lib glfw3.lib cimgui.lib opengl32.lib /out:bin\tlbx.exe
+cl /MP /O2 /MD /DIMGUI_IMPL_API=" " /Fobuild\ /I.\lib\glfw3\include /I.\lib\lua /I.\lib\sqlite3 /I.\lib\cimgui /nologo src\*.c /link /subsystem:windows /entry:mainCRTStartup /libpath:build sqlite3.lib lua53.lib glfw3.lib cimgui.lib opengl32.lib /out:bin\tlbx.exe
