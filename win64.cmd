@@ -17,6 +17,8 @@ if not exist bin md bin
 rem SQLite
 echo Building sqlite3...
 cl /MP /O2 /LD /MD /DSQLITE_API=__declspec(dllexport) /Fobuild\ /nologo lib\sqlite3\sqlite3.c /link /out:bin\sqlite3.dll /implib:build\sqlite3.lib
+echo Building sqlite3 shell...
+cl /MP /O2 /MD /Fobuild\ /nologo lib\sqlite3\shell.c /link build\sqlite3.lib /out:bin\sqlite3.exe
 rem Lua
 set lua_files=lapi.c lcode.c lctype.c ldebug.c ldo.c ldump.c lfunc.c lgc.c llex.c lmem.c lobject.c lopcodes.c lparser.c lstate.c lstring.c ltable.c ltm.c lundump.c lvm.c lzio.c lauxlib.c lbaselib.c lbitlib.c lcorolib.c ldblib.c liolib.c lmathlib.c loslib.c lstrlib.c ltablib.c lutf8lib.c loadlib.c linit.c
 pushd lib\lua
