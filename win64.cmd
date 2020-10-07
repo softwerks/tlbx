@@ -38,9 +38,9 @@ popd
 rem cimgui
 pushd lib\cimgui
 echo Building cimgui...
-cl /MP /O2 /LD /MD /DIMGUI_IMPL_API="extern \"C\" __declspec(dllexport)" /Fo..\..\build\ /I..\glfw3\include /nologo cimgui.cpp .\imgui\*.cpp /link ..\..\build\glfw3.lib opengl32.lib /out:..\..\bin\cimgui.dll /implib:..\..\build\cimgui.lib
+cl /MP /O2 /LD /MD /DIMGUI_IMPL_API="extern \"C\" __declspec(dllexport)" /DIMGUI_DISABLE_OBSOLETE_FUNCTIONS /Fo..\..\build\ /I..\glfw3\include /nologo cimgui.cpp .\imgui\*.cpp /link ..\..\build\glfw3.lib opengl32.lib /out:..\..\bin\cimgui.dll /implib:..\..\build\cimgui.lib
 popd
 
 :fast
 echo Building tlbx...
-cl /MP /O2 /MD /DIMGUI_IMPL_API=" " /Fobuild\ /I.\lib\glfw3\include /I.\lib\lua /I.\lib\sqlite3 /I.\lib\cimgui /nologo src\*.c /link /subsystem:windows /entry:mainCRTStartup /libpath:build sqlite3.lib lua54.lib glfw3.lib cimgui.lib opengl32.lib /out:bin\tlbx.exe
+cl /MP /O2 /MD /DCIMGUI_DEFINE_ENUMS_AND_STRUCTS /Fobuild\ /I.\lib\glfw3\include /I.\lib\lua /I.\lib\sqlite3 /I.\lib\cimgui /nologo src\*.c /link /subsystem:windows /entry:mainCRTStartup /libpath:build sqlite3.lib lua54.lib glfw3.lib cimgui.lib opengl32.lib /out:bin\tlbx.exe

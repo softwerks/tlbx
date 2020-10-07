@@ -14,10 +14,7 @@
  */
 
 #include <GLFW/glfw3.h>
-#define CIMGUI_DEFINE_ENUMS_AND_STRUCTS
 #include <cimgui.h>
-#include <imgui/imgui_impl_glfw.h>
-#include <imgui/imgui_impl_opengl2.h>
 
 int main (int argc, char **argv)
 {
