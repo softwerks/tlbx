@@ -20,12 +20,12 @@ cl /MP /O2 /LD /MD /DSQLITE_API=__declspec(dllexport) /Fobuild\ /nologo lib\sqli
 echo Building sqlite3 shell...
 cl /MP /O2 /MD /Fobuild\ /nologo lib\sqlite3\shell.c /link build\sqlite3.lib /out:bin\sqlite3.exe
 rem Lua
-set lua_files=lapi.c lcode.c lctype.c ldebug.c ldo.c ldump.c lfunc.c lgc.c llex.c lmem.c lobject.c lopcodes.c lparser.c lstate.c lstring.c ltable.c ltm.c lundump.c lvm.c lzio.c lauxlib.c lbaselib.c lbitlib.c lcorolib.c ldblib.c liolib.c lmathlib.c loslib.c lstrlib.c ltablib.c lutf8lib.c loadlib.c linit.c
+set lua_files=lapi.c lcode.c lctype.c ldebug.c ldo.c ldump.c lfunc.c lgc.c llex.c lmem.c lobject.c lopcodes.c lparser.c lstate.c lstring.c ltable.c ltm.c lundump.c lvm.c lzio.c lauxlib.c lbaselib.c lcorolib.c ldblib.c liolib.c lmathlib.c loadlib.c loslib.c lstrlib.c ltablib.c lutf8lib.c linit.c
 pushd lib\lua
 echo Building lua library...
-cl /MP /O2 /LD /MD /DLUA_BUILD_AS_DLL /Fo..\..\build\ /nologo %lua_files% /link /out:..\..\bin\lua53.dll /implib:..\..\build\lua53.lib
+cl /MP /O2 /LD /MD /DLUA_BUILD_AS_DLL /Fo..\..\build\ /nologo %lua_files% /link /out:..\..\bin\lua54.dll /implib:..\..\build\lua54.lib
 echo Building lua interpreter...
-cl /MP /O2 /MD /Fo..\..\build\ /nologo lua.c /link ..\..\build\lua53.lib /out:..\..\bin\lua.exe
+cl /MP /O2 /MD /Fo..\..\build\ /nologo lua.c /link ..\..\build\lua54.lib /out:..\..\bin\lua.exe
 echo Building lua compiler...
 cl /MP /O2 /MD /Fo..\..\build\ /nologo luac.c %lua_files% /link /out:..\..\bin\luac.exe
 popd
@@ -43,4 +43,4 @@ popd
 
 :fast
 echo Building tlbx...
-cl /MP /O2 /MD /DIMGUI_IMPL_API=" " /Fobuild\ /I.\lib\glfw3\include /I.\lib\lua /I.\lib\sqlite3 /I.\lib\cimgui /nologo src\*.c /link /subsystem:windows /entry:mainCRTStartup /libpath:build sqlite3.lib lua53.lib glfw3.lib cimgui.lib opengl32.lib /out:bin\tlbx.exe
+cl /MP /O2 /MD /DIMGUI_IMPL_API=" " /Fobuild\ /I.\lib\glfw3\include /I.\lib\lua /I.\lib\sqlite3 /I.\lib\cimgui /nologo src\*.c /link /subsystem:windows /entry:mainCRTStartup /libpath:build sqlite3.lib lua54.lib glfw3.lib cimgui.lib opengl32.lib /out:bin\tlbx.exe
